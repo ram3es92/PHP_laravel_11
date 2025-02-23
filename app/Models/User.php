@@ -41,8 +41,19 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
+            'id' => 'integer',
+            'name' => 'string',
+            'email' => 'string',
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
+            'remember_token' => 'hashed',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
         ];
+    }
+    public function isAdmin()
+    {
+        return $this->is_admin === 1;
     }
 }
